@@ -39,7 +39,15 @@
 
 ### 1.2. localhost
 
-* #### Диапазон IP-адресов, которые предназначены для создания локальных сетей: 127.0.0.1 - 127.255.255.255 <br> 194.34.23.100 - нельзя использовать как localhost,<br>127.0.0.2 - можно,<br>127.1.0.1 - можно,<br>128.0.0.1 - нельзя.
+#### Диапазон IP-адресов, которые предназначены для создания локальных сетей: 127.0.0.1 - 127.255.255.255 <br> 
+---
+#### 194.34.23.100 - нельзя использовать как localhost,
+---
+#### 127.0.0.2 - можно,
+---
+#### 127.1.0.1 - можно,
+---
+#### 128.0.0.1 - нельзя. <br><br>
 
 ### 1.3. Диапазоны и сегменты сетей
 
@@ -67,8 +75,7 @@
 ---
 #### 10.10.10.10 - private,
 ---
-#### 192.169.168.1 - public.
----
+#### 192.169.168.1 - public. <br><br>
 2) Какие из перечисленных IP адресов шлюза возможны у сети 10.10.0.0/18:
 ----
 #### 10.0.0.1 - может быть шлюзом
@@ -81,7 +88,7 @@
 ----
 #### 10.10.1.255 - может
 ----
-
+<br><br>
 ### Part 2. Статическая маршрутизация между двумя машинами
 
 **== Задание ==**
@@ -113,33 +120,26 @@
 
 ### 2.1. Добавление статического маршрута вручную
 #### Скриншот с выводом команды `ip a` на двух машинах
-![ip a](screenshots/P2-1.png)
-*ip a*<br>
+![ip a](screenshots/P2-1.png)*ip a*<br>
 ### 2.1. Добавление статического маршрута вручную
 
 #### Скриншот с содержанием изменённого файла `etc/netplan/00-installer-config.yaml`
-![yaml](screenshots/P2-2.png)
-*yaml*<br>
+![yaml](screenshots/P2-2.png)*yaml*<br>
 #### Скриншот с выполнением команд для перенастройки netplan, пробрасывания портов и пинг 
-![netplan apply + ping](screenshots/P2-3.png)
-*netplan apply + ping*<br>
+![netplan apply + ping](screenshots/P2-3.png)*netplan apply + ping*<br>
 #### 2.2. Добавление статического маршрута с сохранением
 
 #### Перезагрузил систему командой `reboot` и попробовал пропинговать машины снова, не получилось.
-![ping](screenshots/P2-4.png)
-*ping*<br>
+![ping](screenshots/P2-4.png)*ping*<br>
 
 #### Изменяем файл `etc/netplan/00-installer-config.yaml` с указанием туннелей.
-![yaml](screenshots/P2-5.png)
-*yaml*<br>
+![yaml](screenshots/P2-5.png)*yaml*<br>
 
 #### Скриншот с выполнением команд для перенастройки netplan и пинг 
-![netplan apply + ping](screenshots/P2-6.png)
-*netplan apply + ping*<br>
+![netplan apply + ping](screenshots/P2-6.png)*netplan apply + ping*<br>
 
 #### Перезагрузил систему командой `reboot` и попробовал пропинговать машины снова, на этот раз всё получилось.
-![ping](screenshots/P2-7.png)
-*ping*<br>
+![ping](screenshots/P2-7.png)*ping*<br>
 
 ### Part 3. Утилита **iperf3**
 
@@ -163,8 +163,7 @@
 #### Установил iperf3 на 2 машины командой `sudo apt install iperf3`
 #### На ws2 установил прослушивание порта 5201 командой `iperf3 -s`, на ws1 сделал коннект до ip ws2 командой `iperf3 -c 172.24.116.8 -p 5201`
 
-![iperf3](screenshots/P3-1.png)
-*iperf3*<br>
+![iperf3](screenshots/P3-1.png)*iperf3*<br>
 
 ### Part 4. Сетевой экран
 
@@ -204,18 +203,15 @@ iptables -X
 
 * #### Установил iptables `sudo apt get install iptables`
 * #### На ws1 и ws2 создал файл `/etc/firewall.sh` в котором прописал следующие команды:
-![firewall.sh](screenshots/P4-1.png)
-*firewall.sh*<br>
+![firewall.sh](screenshots/P4-1.png)*firewall.sh*<br>
 #### Далее запустил этот файл на обеих машинах командами `sudo chmod +x /etc/firewall.sh` и `sudo bash /etc/firewall.sh`, пропинговал соединения между машинами.
-![ping](screenshots/P4-2.png)
-*firewall.sh*<br>
+![ping](screenshots/P4-2.png)*firewall.sh*<br>
 #### Разница между стратегиями заключается в том, что первое правило для OUTPUT `echo-reply` на ws1 было DROP и эта машина не пинговалась. Для ws2 первое правило - ACCEPT и ответ от этой машины приходит.
 
 ### 4.2. Утилита **nmap**
 * #### Установил `nmap` командой `sudo apt install nmap`
 * #### Не пингуется машина с ip 192.168.100.10, запустил `nmap 192.168.100.10`
-![nmap](screenshots/P4-2.png)
-*firewall.sh*<br>
+![nmap](screenshots/P4-2.png)*firewall.sh*<br>
 
 ### Part 5. Статическая маршрутизация сети
 
@@ -226,24 +222,19 @@ iptables -X
 ### 5.1. Настройка адресов машин
 ##### Настроить конфигурации машин в *etc/netplan/00-installer-config.yaml* согласно сети на рисунке.
 - ##### В отчёт поместить скрины с содержанием файла *etc/netplan/00-installer-config.yaml* для каждой машины.
-![etc/netplan/00-installer-config.yaml](screenshots/P5-1.png)
-*etc/netplan/00-installer-config.yaml*<br>
+![etc/netplan/00-installer-config.yaml](screenshots/P5-1.png)*etc/netplan/00-installer-config.yaml*<br>
 ##### Перезапустить сервис сети. Если ошибок нет, то командой `ip -4 a` проверить, что адрес машины задан верно. Также пропинговать ws22 с ws21. Аналогично пропинговать r1 с ws11.
-![etc/netplan/00-installer-config.yaml](screenshots/P5-2.png)
-*etc/netplan/00-installer-config.yaml*<br>
-![commands](screenshots/P5-3.png)
-*commands*<br>
+![etc/netplan/00-installer-config.yaml](screenshots/P5-2.png)*etc/netplan/00-installer-config.yaml*<br>
+![commands](screenshots/P5-3.png)*commands*<br>
 ### 5.2. Включение переадресации IP-адресов.
 ##### Для включения переадресации IP, выполните команду на роутерах:
 `sysctl -w net.ipv4.ip_forward=1` <br>
 *При таком подходе переадресация не будет работать после перезагрузки системы.*
-![commands](screenshots/P5-4.png)
-*commands*<br>
+![commands](screenshots/P5-4.png)*commands*<br>
 ##### Откройте файл */etc/sysctl.conf* и добавьте в него следующую строку:
 `net.ipv4.ip_forward = 1` <br>
 *При использовании этого подхода, IP-переадресация включена на постоянной основе.*
-![commands](screenshots/P5-5.png)
-*commands*<br>
+![commands](screenshots/P5-5.png)*commands*<br>
 ### 5.3. Установка маршрута по-умолчанию
 Пример вывода команды `ip r` после добавления шлюза:
 ```
@@ -251,15 +242,12 @@ default via 10.10.0.1 dev eth0
 10.10.0.0/18 dev eth0 proto kernel scope link src 10.10.0.2
 ```
 ##### Настроить маршрут по-умолчанию (шлюз) для рабочих станций. gateway4 [ip роутера] в файле конфигураций
-![yaml](screenshots/P5-6.png)
-*yaml*<br>
+![yaml](screenshots/P5-6.png)*yaml*<br>
 ##### Вызвать `ip r` и показать, что добавился маршрут в таблицу маршрутизации
-![commands](screenshots/P5-8.png)
-*commands*<br>
+![commands](screenshots/P5-8.png)*commands*<br>
 ##### Пропинговать с ws11 роутер r2 и показать на r2, что пинг доходит. Для этого использовать команду:
 `tcpdump -tn -i eth1`
-![ping](screenshots/P5-9.png)
-*ping*<br>
+![ping](screenshots/P5-9.png)*ping*<br>
 
 ### 5.4. Добавление статических маршрутов
 ##### Добавить в роутеры r1 и r2 статические маршруты в файле конфигураций. Пример для r1 маршрута в сетку 10.20.0.0/26:
@@ -268,20 +256,17 @@ default via 10.10.0.1 dev eth0
 - to: 10.20.0.0
   via: 10.100.0.12
 ```
-![yaml](screenshots/P5-10.png)
-*yaml*<br>
+![yaml](screenshots/P5-10.png)*yaml*<br>
 ##### Вызвать `ip r` и показать таблицы с маршрутами на обоих роутерах. Пример таблицы на r1:
 ```
 10.100.0.0/16 dev eth1 proto kernel scope link src 10.100.0.11
 10.20.0.0/26 via 10.100.0.12 dev eth1
 10.10.0.0/18 dev eth0 proto kernel scope link src 10.10.0.1
 ```
-![commands](screenshots/P5-11.png)
-*commands*<br>
+![commands](screenshots/P5-11.png)*commands*<br>
 ##### Запустить команды на ws11:
 `ip r list 10.10.0.0/[маска сети]` и `ip r list 0.0.0.0/0`
-![commands](screenshots/P5-12.png)
-*commands*<br>
+![commands](screenshots/P5-12.png)*commands*<br>
 - Для адреса 10.10.0.0/\[маска сети\] был выбран маршрут, отличный от 0.0.0.0/0, хотя он попадает под маршрут по-умолчанию из-за того, что маршрут 0.0.0.0/0 используется при адресации без указания каких-либо других более конкретных маршрутов. 
 
 
@@ -298,29 +283,24 @@ default via 10.10.0.1 dev eth0
 - В отчёт поместить скрины с вызовом и выводом использованных команд (tcpdump и traceroute).
 - В отчёте, опираясь на вывод, полученный из дампа на r1, объяснить принцип работы построения пути при помощи **traceroute**.
 
-![dump](screenshots/P5-13.png)
-*dump*<br>
+![dump](screenshots/P5-13.png)*dump*<br>
 ##### Для определения промежуточных маршрутизаторов traceroute отправляет целевому узлу серию ICMP-пакетов (по умолчанию 3 пакета), с каждым шагом увеличивая значение поля TTL («время жизни») на 1.
-![dump](screenshots/P5-14.png)
-*dump*<br>
+![dump](screenshots/P5-14.png)*dump*<br>
 ##### Это поле обычно указывает максимальное количество маршрутизаторов, которое может быть пройдено пакетом. Первая серия пакетов отправляется с TTL, равным 1, и поэтому первый же маршрутизатор возвращает обратно ICMP-сообщение «time exceeded in transit», указывающее на невозможность доставки данных.
-![dump](screenshots/P5-15.png)
-*dump*<br>
+![dump](screenshots/P5-15.png)*dump*<br>
 ##### Traceroute фиксирует адрес маршрутизатора, а также время между отправкой пакета и получением ответа (эти сведения выводятся на монитор компьютера). Затем traceroute повторяет отправку серии пакетов, но уже с TTL, равным 2, что заставляет первый маршрутизатор уменьшить TTL пакетов на единицу и направить их ко второму маршрутизатору. Второй маршрутизатор, получив пакеты с TTL=1, так же возвращает «time exceeded in transit».
 
 ##### Процесс повторяется до тех пор, пока пакет не достигнет целевого узла. При получении ответа от этого узла процесс трассировки считается завершённым.
 
 ##### На оконечном хосте IP-датаграмма с TTL = 1 не отбрасывается и не вызывает ICMP-сообщения типа срок истёк, а должна быть отдана приложению. Достижение пункта назначения определяется следующим образом: отсылаемые traceroute датаграммы содержат UDP-пакет с заведомо неиспользуемым номером порта на адресуемом хосте. Номер порта будет равен 33434 + (максимальное количество транзитных участков до узла) — 1. В пункте назначения UDP-модуль, получая подобные датаграммы, возвращает ICMP-сообщения об ошибке «порт недоступен». Таким образом, чтобы узнать о завершении работы, программе traceroute достаточно обнаружить, что поступило ICMP-сообщение об ошибке этого типа.
-![dump](screenshots/P5-16.png)
-*dump*<br>
+![dump](screenshots/P5-16.png)*dump*<br>
 
 ### 5.6. Использование протокола **ICMP** при маршрутизации
 ##### Запустить на r1 перехват сетевого трафика, проходящего через eth0 с помощью команды:
 `tcpdump -n -i eth0 icmp`
 ##### Пропинговать с ws11 несуществующий IP (например, *10.30.0.111*) с помощью команды:
 `ping -c 1 10.30.0.111`
-![commands](screenshots/P5-17.png)
-*commands*<br>
+![commands](screenshots/P5-17.png)*commands*<br>
 ##### Сохранить дампы образов виртуальных машин
 
 ### Part 6. Динамическая настройка IP с помощью **DHCP**
@@ -330,18 +310,18 @@ default via 10.10.0.1 dev eth0
 ##### Сначала установил на r2 `isc-dhcp-server`
 ##### Для r2 настроил в файле */etc/dhcp/dhcpd.conf* конфигурацию службы **DHCP**:
 ##### 1) указать адрес маршрутизатора по-умолчанию, DNS-сервер и адрес внутренней сети. Пример файла для r2:
-![dhcp.conf](screenshots/P6-1.png)
+![dhcp.conf](screenshots/P6-1.png)*dhcp.conf*<br>
 ##### 2) в файле *resolv.conf* прописать `nameserver 8.8.8.8.`
-![resolv.conf](screenshots/P6-2.png)
+![resolv.conf](screenshots/P6-2.png)*resolv.conf*<br>
 ##### Отредактировал файл /etc/default/isc-dhcp-server
-![default](screenshots/P6-2.1.png)
+![default](screenshots/P6-2.1.png)*default*<br>
 ##### Перезагрузить службу **DHCP** командой `systemctl restart isc-dhcp-server`. 
-![restart dhcp](screenshots/P6-3.1.png)
+![restart dhcp](screenshots/P6-3.1.png)*restart dhcp*<br>
 ##### Установил новые настройки у машины ws21, применил их `sudo netplan apply`
-![restart dhcp](screenshots/P6-3.png)
+![restart dhcp](screenshots/P6-3.png)*restart dhcp*<br>
 ##### Машину ws21 перезагрузить при помощи `reboot` и через `ip a` показать, что она получила адрес. Также пропинговать ws22 с ws21.
-![yaml](screenshots/P6-4.png)
-![ping](screenshots/P6-5.png)
+![yaml](screenshots/P6-4.png)*yaml*<br>
+![ping](screenshots/P6-5.png)*ping*<br>
 ##### Указать MAC адрес у ws11, для этого в *etc/netplan/00-installer-config.yaml* надо добавить строки: `macaddress: 10:10:10:10:10:BA`, `dhcp4: true`
 ##### Также MAC надо указать в настройках адаптера виртуальной машины в virtualbox
 - В отчёт поместить скрин с содержанием изменённого файла *etc/netplan/00-installer-config.yaml*.
@@ -350,16 +330,16 @@ default via 10.10.0.1 dev eth0
 ##### Установил на r1 `isc-dhcp-server`
 ##### Для r1 настроил в файле */etc/dhcp/dhcpd.conf* конфигурацию службы **DHCP**:
 ##### 1) указать адрес маршрутизатора по-умолчанию, DNS-сервер и адрес внутренней сети:
-![dhcp.conf](screenshots/P6-6.png)
+![dhcp.conf](screenshots/P6-6.png)*dhcp.conf*<br>
 ##### 2) в файле *resolv.conf* прописать `nameserver 8.8.8.8.`
-![resolv.conf](screenshots/P6-7.png)
+![resolv.conf](screenshots/P6-7.png)*resolv.conf*<br>
 ##### Отредактировал файл /etc/default/isc-dhcp-server
-![default](screenshots/P6-8.png)
+![default](screenshots/P6-8.png)*default*<br>
 ##### Перезагрузить службу **DHCP** командой `systemctl restart isc-dhcp-server.service`. 
-![restart dhcp](screenshots/P6-9.png)
+![restart dhcp](screenshots/P6-9.png)*restart dhcp*<br>
 ##### Установил новые настройки у машины ws11, применил их `sudo netplan apply`, перезапустил машину. ВАЖНО установить mac адрес на виртуальном порте.
 ##### Получил ip который прописал
-![restart dhcp](screenshots/P6-10.png)
+![restart dhcp](screenshots/P6-10.png)*restart dhcp*<br>
 
 ##### Запросить с ws21 обновление ip адреса
 - В отчёте поместить скрины ip до и после обновления.
@@ -373,37 +353,37 @@ default via 10.10.0.1 dev eth0
 
 *В данном задании используются виртуальные машины из Части 5*
 ##### Загрузил снепшоты виртуальных машин из конца 5 части, убрал gateway из настроек yaml и установил на ws22 и r1 `apache2`
-![install](screenshots/P7-0.png)
+![install](screenshots/P7-0.png)*install*<br>
 ##### В файле */etc/apache2/ports.conf* на ws22 и r1 изменить строку `Listen 80` на `Listen 0.0.0.0:80`, то есть сделать сервер Apache2 общедоступным
-![ports.conf](screenshots/P7-1.png)
+![ports.conf](screenshots/P7-1.png)*ports.conf*<br>
 ##### Запустить веб-сервер Apache командой `service apache2 start` на ws22 и r1
-![ports.conf](screenshots/P7-2.png)
+![ports.conf](screenshots/P7-2.png)*ports.conf*<br>
 ##### Добавить в фаервол, созданный по аналогии с фаерволом из Части 4, на r2 следующие правила:
 ##### 1) Удаление правил в таблице filter - `iptables -F`
 ##### 2) Удаление правил в таблице "NAT" - `iptables -F -t nat`
 ##### 3) Отбрасывать все маршрутизируемые пакеты - `iptables --policy FORWARD DROP`
 ##### Запускать файл также, как в Части 4
 ##### Проверить соединение между ws22 и r1 командой `ping`
-![ping](screenshots/P7-3.png)
+![ping](screenshots/P7-3.png)*ping*<br>
 *При запуске файла с этими правилами, ws22 не должна "пинговаться" с r1*
 ##### Добавить в файл ещё одно правило:
 ##### 4) Разрешить маршрутизацию всех пакетов протокола **ICMP**
 ##### Запускать файл также, как в Части 4
 ##### Проверить соединение между ws22 и r1 командой `ping`
-![ping](screenshots/P7-4.png)
+![ping](screenshots/P7-4.png)*ping*<br>
 *При запуске файла с этими правилами, ws22 должна "пинговаться" с r1*
 ##### Добавить в файл ещё два правила:
 ##### 5) Включить **SNAT**, а именно маскирование всех локальных ip из локальной сети, находящейся за r2 (по обозначениям из Части 5 - сеть 10.20.0.0)
 *Совет: стоит подумать о маршрутизации внутренних пакетов, а также внешних пакетов с установленным соединением*
 ##### 6) Включить **DNAT** на 8080 порт машины r2 и добавить к веб-серверу Apache, запущенному на ws22, доступ извне сети
 *Совет: стоит учесть, что при попытке подключения возникнет новое tcp-соединение, предназначенное ws22 и 80 порту*
-![telnet](screenshots/P7-6.png)
+![telnet](screenshots/P7-6.png)*telnet*<br>
 ##### Запускать файл также, как в Части 4
 *Перед тестированием рекомендуется отключить сетевой интерфейс **NAT** (его наличие можно проверить командой `ip a`) в VirtualBox, если он включен*
 ##### Проверить соединение по TCP для **SNAT**, для этого с ws22 подключиться к серверу Apache на r1 командой:
 `telnet [адрес] [порт]`
 ##### Проверить соединение по TCP для **DNAT**, для этого с r1 подключиться к серверу Apache на ws22 командой `telnet` (обращаться по адресу r2 и порту 8080)
-![telnet](screenshots/P7-7.png)
+![telnet](screenshots/P7-7.png)*telnet*<br>
 
 ##### Сохранить дампы образов виртуальных машин
 **p.s. Ни в коем случае не сохранять дампы в гит!**
@@ -416,9 +396,15 @@ default via 10.10.0.1 dev eth0
 
 ##### Запустить на r2 фаервол с правилами из Части 7
 ##### Запустить веб-сервер **Apache** на ws22 только на localhost (то есть в файле */etc/apache2/ports.conf* изменить строку `Listen 80` на `Listen localhost:80`)
+![ports.conf](screenshots/P8-1.png)*ports.conf*<br>
+![start apache2](screenshots/P8-2.png)*start apache2 in ws22*<br>
 ##### Воспользоваться *Local TCP forwarding* с ws21 до ws22, чтобы получить доступ к веб-серверу на ws22 с ws21
+![local TCP](screenshots/P8-3.png)*local tcp*<br>
+![telnet](screenshots/P8-4.png)*telnet output*<br>
 ##### Воспользоваться *Remote TCP forwarding* c ws11 до ws22, чтобы получить доступ к веб-серверу на ws22 с ws11
-##### Для проверки, сработало ли подключение в обоих предыдущих пунктах, перейдите во второй терминал (например, клавишами Alt + F2) и выполните команду:
-`telnet 127.0.0.1 [локальный порт]`
+![remote TCP](screenshots/P8-5.png)*remote tcp*<br>
+![telnet](screenshots/P8-6.png)*telnet output*<br>
+![netplan](screenshots/P8-7.png)*remote tcp*<br>
+![firewall](screenshots/P8-8.png)*firewall*<br>
 
 ##### Сохранить дампы образов виртуальных машин
